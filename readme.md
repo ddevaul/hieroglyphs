@@ -1,0 +1,1 @@
+This is a project created by Desi DeVaul with sponsorship from Thomas Hare in the Comparative Literature Department at Princeton University. The point of this project is to make hieroglyphic calligraphy easy and accessible.
