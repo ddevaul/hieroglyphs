@@ -15,17 +15,37 @@ export default class Quail {
     this.tolerance = 15;
     this.strokeWidth = 5;
     this.line1Points = [
-    [{"x": 70, "y": 190}, {"x": 120, "y": 190}, {"x": 120, "y": 190}, {"x": 120, "y": 190}],
-    [{"x": 120, "y": 190}, {"x": 130, "y": 200}, {"x": 140, "y": 210}, {"x": 120, "y": 230}],
-    [{"x": 120, "y": 230}, {"x": 50, "y": 230}, {"x": 50, "y": 230}, {"x": 50, "y": 230}],
-    [{"x": 50, "y": 230}, {"x": 45, "y": 225}, {"x": 45, "y": 220}, {"x": 50, "y": 210}],
-    [{"x": 50, "y": 210}, {"x": 55, "y": 210}, {"x": 60, "y": 210}, {"x": 60, "y": 210}],
-    [{"x": 60, "y": 210}, {"x": 330, "y": 210}, {"x": 330, "y": 210}, {"x": 330, "y": 210}]
-    ]
+      [{"x": 100, "y": 100},{"x": 100, "y": 100},{"x": 110, "y": 85},{"x": 130, "y": 72},],
+      [{"x": 130, "y": 72},{"x": 130, "y": 72},{"x": 137, "y": 66},{"x": 140, "y": 66},],
+      [{"x": 139, "y": 66},{"x": 140, "y": 65},{"x": 165, "y": 66},{"x": 177, "y": 71},],
+      [{"x": 177, "y": 71},{"x": 177, "y": 71},{"x": 180, "y": 73},{"x": 181, "y": 78},],
+      [{"x": 181, "y": 78},{"x": 181, "y": 78},{"x": 186, "y": 94},{"x": 187, "y": 103},],
+  ]
     this.line2Points = [
-    [{"x": 330, "y": 210}, {"x": 330, "y": 140}, {"x": 330, "y": 140}, {"x": 330, "y": 140}],
-    [{"x": 330, "y": 140}, {"x": 290, "y": 140}, {"x": 290, "y": 140}, {"x": 290, "y": 140}],
-    [{"x": 290, "y": 140}, {"x": 270, "y": 210}, {"x": 270, "y": 210}, {"x": 270, "y": 210}]
+      [{"x": 88, "y": 100},{"x": 90, "y": 100},{"x": 97, "y": 100},{"x": 110, "y": 100},],
+      [{"x": 110, "y": 100},{"x": 110, "y": 100},{"x": 115, "y": 100},{"x": 115, "y": 105},],
+      [{"x": 115, "y": 105},{"x": 115, "y": 105},{"x": 115, "y": 165},{"x": 115, "y": 172},],
+      [{"x": 115, "y": 172},{"x": 115, "y": 172},{"x": 115, "y": 176},{"x": 117, "y": 180},],
+      [{"x": 117, "y": 180},{"x": 117, "y": 180},{"x": 200, "y": 300},{"x": 200, "y": 300},],
+      [{"x": 200, "y": 300},{"x": 200, "y": 300},{"x": 210, "y": 310},{"x": 210, "y": 315},],
+      [{"x": 210, "y": 315},{"x": 210, "y": 315},{"x": 210, "y": 380},{"x": 210, "y": 380},],
+    ]
+    this.line3Points = [
+      [{"x": 188, "y": 283},{"x": 188, "y": 283},{"x": 130, "y": 380},{"x": 130, "y": 380},],
+    ]
+    this.line4Points = [
+      [{"x": 187, "y": 103},{"x": 187, "y": 103},{"x": 190, "y": 110},{"x": 195, "y": 110},],
+      [{"x": 195, "y": 110},{"x": 195, "y": 110},{"x": 222, "y": 125},{"x": 230, "y": 140},],
+      [{"x": 230, "y": 140},{"x": 230, "y": 140},{"x": 280, "y": 186},{"x": 320, "y": 270},],
+      [{"x": 320, "y": 270},{"x": 320, "y": 270},{"x": 198, "y": 295},{"x": 198, "y": 295},],
+    ]
+    this.line5Points = [
+      [{"x": 210, "y": 380},{"x": 210, "y": 380},{"x": 90, "y": 380},{"x": 90, "y": 380},],
+    ]
+    this.line6Points = [
+      [{"x": 185, "y": 170},{"x": 185, "y": 170},{"x": 170, "y": 196},{"x": 174, "y": 201},],
+      [{"x": 174, "y": 201},{"x": 174, "y": 201},{"x": 204, "y": 230},{"x": 204, "y": 230},],
+      [{"x": 204, "y": 232},{"x": 204, "y": 232},{"x": 210, "y": 180},{"x": 210, "y": 180},],
     ]
   }
 
@@ -141,6 +161,18 @@ export default class Quail {
     if (segmentIndex === 1) {
       return this.isLine(this.line2Points, points, threshold);
     }
+    if (segmentIndex === 2) {
+      return this.isLine(this.line3Points, points, threshold);
+    }
+    if (segmentIndex === 3) {
+      return this.isLine(this.line4Points, points, threshold);
+    }
+    if (segmentIndex === 4) {
+      return this.isLine(this.line5Points, points, threshold);
+    }
+    if (segmentIndex === 5) {
+      return this.isLine(this.line6Points, points, threshold);
+    }
     return false;
   }
 
@@ -151,27 +183,61 @@ export default class Quail {
       <>
         {(maxSegmentIndex > 0 || reveal) ? 
         <>
-          <Path d={`M ${(100 / 400 * this.length)} ${(100 / 400 * this.length)} C ${(120 / 400 * this.length)} ${(80 / 400 * this.length)}, ${(120 / 400 * this.length)} ${(80 / 400 * this.length)}, ${(120 / 400 * this.length)} ${(80 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-          <Path d={`M ${(120 / 400 * this.length)} ${(80 / 400 * this.length)} C ${(140 / 400 * this.length)} ${(70 / 400 * this.length)}, ${(150 / 400 * this.length)} ${(65 / 400 * this.length)}, ${(155 / 400 * this.length)} ${(75 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-          
-          {/* <Path d={`M ${(120 / 400 * this.length)} ${(190 / 400 * this.length)} C ${(130 / 400 * this.length)} ${(200 / 400 * this.length)}, ${(140 / 400 * this.length)} ${(210 / 400 * this.length)}, ${(120 / 400 * this.length)} ${(230 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-          <Path d={`M ${(120 / 400 * this.length)} ${(230 / 400 * this.length)} C ${(50 / 400 * this.length)} ${(230 / 400 * this.length)}, ${(50 / 400 * this.length)} ${(230 / 400 * this.length)}, ${(50 / 400 * this.length)} ${(230 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-          <Path d={`M ${(50 / 400 * this.length)} ${(230 / 400 * this.length)} C ${(45 / 400 * this.length)} ${(225 / 400 * this.length)}, ${(45 / 400 * this.length)} ${(220 / 400 * this.length)}, ${(50 / 400 * this.length)} ${(210 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-          <Path d={`M ${(50 / 400 * this.length)} ${(210 / 400 * this.length)} C ${(55 / 400 * this.length)} ${(210 / 400 * this.length)}, ${(60 / 400 * this.length)} ${(210 / 400 * this.length)}, ${(60 / 400 * this.length)} ${(210 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-          <Path d={`M ${(60 / 400 * this.length)} ${(210 / 400 * this.length)} C ${(330 / 400 * this.length)} ${(210 / 400 * this.length)}, ${(330 / 400 * this.length)} ${(210 / 400 * this.length)}, ${(330 / 400 * this.length)} ${(210 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-           */}
+          {/* head */}
+          <Path d={`M ${(100 / 400 * this.length)} ${(100 / 400 * this.length)} C ${(100 / 400 * this.length)} ${(100 / 400 * this.length)}, ${(110 / 400 * this.length)} ${(85 / 400 * this.length)}, ${(130 / 400 * this.length)} ${(72 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(130 / 400 * this.length)} ${(72 / 400 * this.length)} C ${(130 / 400 * this.length)} ${(72 / 400 * this.length)}, ${(137 / 400 * this.length)} ${(66 / 400 * this.length)}, ${(140 / 400 * this.length)} ${(66 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(139 / 400 * this.length)} ${(66 / 400 * this.length)} C ${(140 / 400 * this.length)} ${(65 / 400 * this.length)}, ${(165 / 400 * this.length)} ${(66 / 400 * this.length)}, ${(177 / 400 * this.length)} ${(71 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(177 / 400 * this.length)} ${(71 / 400 * this.length)} C ${(177 / 400 * this.length)} ${(71 / 400 * this.length)}, ${(180 / 400 * this.length)} ${(73 / 400 * this.length)}, ${(181 / 400 * this.length)} ${(78 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(181 / 400 * this.length)} ${(78 / 400 * this.length)} C ${(181 / 400 * this.length)} ${(78 / 400 * this.length)}, ${(186 / 400 * this.length)} ${(94 / 400 * this.length)}, ${(187 / 400 * this.length)} ${(103 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
         </>
           : <></>}
         
         {(maxSegmentIndex > 1 || reveal) ? 
         <>
-          <Path d={`M ${(330 / 400 * this.length)} ${(210 / 400 * this.length)} C ${(330 / 400 * this.length)} ${(140  / 400 * this.length)}, ${(330 / 400 * this.length)} ${(140 / 400 * this.length)}, ${(330 / 400 * this.length)} ${(140 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/>
-          <Path d={`M ${(330 / 400 * this.length)} ${(140 / 400 * this.length)} C ${(290 / 400 * this.length)} ${(140 / 400 * this.length)}, ${(290 / 400 * this.length)} ${(140 / 400 * this.length)}, ${(290 / 400 * this.length)} ${(140 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/>
-          <Path d={`M ${(290 / 400 * this.length)} ${(140 / 400 * this.length)} C ${(270 / 400 * this.length)} ${(210 / 400 * this.length)}, ${(270 / 400 * this.length)} ${(210 / 400 * this.length)}, ${(270 / 400 * this.length)} ${(210 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/>
-          
+          <Path d={`M ${(88 / 400 * this.length)} ${(100 / 400 * this.length)} C ${(90 / 400 * this.length)} ${(100 / 400 * this.length)}, ${(97 / 400 * this.length)} ${(100 / 400 * this.length)}, ${(110 / 400 * this.length)} ${(100 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(110 / 400 * this.length)} ${(100 / 400 * this.length)} C ${(110 / 400 * this.length)} ${(100 / 400 * this.length)}, ${(115 / 400 * this.length)} ${(100 / 400 * this.length)}, ${(115 / 400 * this.length)} ${(105 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(115 / 400 * this.length)} ${(105 / 400 * this.length)} C ${(115 / 400 * this.length)} ${(105 / 400 * this.length)}, ${(115 / 400 * this.length)} ${(165 / 400 * this.length)}, ${(115 / 400 * this.length)} ${(172 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(115 / 400 * this.length)} ${(172 / 400 * this.length)} C ${(115 / 400 * this.length)} ${(172 / 400 * this.length)}, ${(115 / 400 * this.length)} ${(176 / 400 * this.length)}, ${(117 / 400 * this.length)} ${(180 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(117 / 400 * this.length)} ${(180 / 400 * this.length)} C ${(117 / 400 * this.length)} ${(180 / 400 * this.length)}, ${(200 / 400 * this.length)} ${(300 / 400 * this.length)}, ${(200 / 400 * this.length)} ${(300 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(200 / 400 * this.length)} ${(300 / 400 * this.length)} C ${(200 / 400 * this.length)} ${(300 / 400 * this.length)}, ${(210 / 400 * this.length)} ${(310 / 400 * this.length)}, ${(210 / 400 * this.length)} ${(315 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(210 / 400 * this.length)} ${(315 / 400 * this.length)} C ${(210 / 400 * this.length)} ${(315 / 400 * this.length)}, ${(210 / 400 * this.length)} ${(380 / 400 * this.length)}, ${(210 / 400 * this.length)} ${(380 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
         </>
         : <></>
         }
+
+{(maxSegmentIndex > 2 || reveal) ? 
+        <>
+          <Path d={`M ${(188 / 400 * this.length)} ${(283 / 400 * this.length)} C ${(188 / 400 * this.length)} ${(283 / 400 * this.length)}, ${(130 / 400 * this.length)} ${(380 / 400 * this.length)}, ${(130 / 400 * this.length)} ${(380 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+        </>
+        : <></>
+        }
+
+{(maxSegmentIndex > 3 || reveal) ? 
+        <>
+          <Path d={`M ${(187 / 400 * this.length)} ${(103 / 400 * this.length)} C ${(187 / 400 * this.length)} ${(103 / 400 * this.length)}, ${(190 / 400 * this.length)} ${(110 / 400 * this.length)}, ${(195 / 400 * this.length)} ${(110 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(195 / 400 * this.length)} ${(110 / 400 * this.length)} C ${(195 / 400 * this.length)} ${(110 / 400 * this.length)}, ${(222 / 400 * this.length)} ${(125 / 400 * this.length)}, ${(230 / 400 * this.length)} ${(140 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(230 / 400 * this.length)} ${(140 / 400 * this.length)} C ${(230 / 400 * this.length)} ${(140 / 400 * this.length)}, ${(280 / 400 * this.length)} ${(186 / 400 * this.length)}, ${(320 / 400 * this.length)} ${(270 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(320 / 400 * this.length)} ${(270 / 400 * this.length)} C ${(320 / 400 * this.length)} ${(270 / 400 * this.length)}, ${(198 / 400 * this.length)} ${(295 / 400 * this.length)}, ${(198 / 400 * this.length)} ${(295 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+
+        </>
+        : <></>
+}
+
+{(maxSegmentIndex > 4 || reveal) ? 
+        <>
+          <Path d={`M ${(210 / 400 * this.length)} ${(380 / 400 * this.length)} C ${(210 / 400 * this.length)} ${(380 / 400 * this.length)}, ${(90 / 400 * this.length)} ${(380 / 400 * this.length)}, ${(90 / 400 * this.length)} ${(380 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+        </>
+        : <></>
+}
+
+{(maxSegmentIndex > 5 || reveal) ? 
+        <>
+          <Path d={`M ${(185 / 400 * this.length)} ${(170 / 400 * this.length)} C ${(185 / 400 * this.length)} ${(170 / 400 * this.length)}, ${(170 / 400 * this.length)} ${(196 / 400 * this.length)}, ${(174 / 400 * this.length)} ${(201 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(174 / 400 * this.length)} ${(201 / 400 * this.length)} C ${(174 / 400 * this.length)} ${(201 / 400 * this.length)}, ${(204 / 400 * this.length)} ${(230 / 400 * this.length)}, ${(204 / 400 * this.length)} ${(230 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(204 / 400 * this.length)} ${(232 / 400 * this.length)} C ${(204 / 400 * this.length)} ${(232 / 400 * this.length)}, ${(210 / 400 * this.length)} ${(180 / 400 * this.length)}, ${(210 / 400 * this.length)} ${(180 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+        </>
+        : <></>
+}
       </>
     )
 

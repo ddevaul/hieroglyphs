@@ -55,8 +55,12 @@ const GesturePath = ({ length, paths, color, glyph, segmentIndex, reveal }) => {
 
 const GestureRecorder = ({ onPathChanged, segmentIndex, paths }) => {
 
-  const panResponder =       PanResponder.create({
+  const panResponder = PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
       onMoveShouldSetPanResponder: () => true,
+      onPanResponderStart: (event) => {
+        console.log(event.nativeEvent.locationX, event.nativeEvent.locationY,);
+      },
       onPanResponderMove: (event) => {
         onPathChanged({
           x: event.nativeEvent.locationX,
@@ -156,7 +160,7 @@ export default SketchPad = () => {
         {/* <Button title="Length" onPress={() => console.log(paths.length)}></Button> */}
         <Button title="Clear" onPress={clearPaths}></Button>
 
-        <Button title="Paths" onPress={() => console.log(paths)}></Button>
+        <Button title="Paths" style={styles.button} onPress={() => console.log(paths)}></Button>
         {/* <Button title="test" onPress={() => distanceBetweenSemicircle(95, 250)}></Button> */}
       </View>
     </View>
@@ -166,7 +170,8 @@ export default SketchPad = () => {
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center', alignItems: 'center', backgroundColor: 'grey', 
-    height: "100%", width: "100%", display: 'flex', justifyContent: 'space-between'
+    height: "100%", width: "100%", display: 'flex', justifyContent: 'space-between',
+    paddingBottom: "5%",
   },
   canvas: {
     backgroundColor: "orange",
@@ -174,6 +179,9 @@ const styles = StyleSheet.create({
   footer: {
     backgroundColor: "red", 
   },
+  button: {
+    paddingBottom: "5px",
+  }
 });
 
 
