@@ -15,40 +15,13 @@ export default class Bolt {
     this.tolerance = 15;
     this.strokeWidth = 5;
     this.line1Points = [
-      [{"x": 130, "y": 200},{"x": 120, "y": 180},{"x": 75, "y": 160},{"x": 65, "y": 200},],
-      [{"x": 65, "y": 200},{"x": 75, "y": 240},{"x": 120, "y": 220},{"x": 130, "y": 200},],
-      [{"x": 130, "y": 200},{"x": 140, "y": 170},{"x": 300, "y": 170},{"x": 310, "y": 200},],
-      [{"x": 310, "y": 200},{"x": 300, "y": 230},{"x": 140, "y": 230},{"x": 130, "y": 200},],
-      
-      
+      [{"x": 75, "y": 200},{"x": 75, "y": 200},{"x": 325, "y": 200},{"x": 325, "y": 200},],
     ]
     this.line2Points = [
-      [{"x": 116, "y": 189},{"x": 116, "y": 189},{"x": 125, "y": 170},{"x": 125, "y": 170},],
-     
+      [{"x": 180, "y": 185},{"x": 180, "y": 185},{"x": 180, "y": 215},{"x": 180, "y": 215},],
     ]
     this.line3Points = [
-      [{"x": 96, "y": 178},{"x": 96, "y": 178},{"x": 96, "y": 157},{"x": 96, "y": 157},],
-      
-
-    ]
-    this.line4Points = [
-      [{"x": 78, "y": 180},{"x": 78, "y": 180},{"x": 62, "y": 165},{"x": 62, "y": 165},],
-      
-    ]
-    this.line5Points = [
-      [{"x": 65, "y": 200},{"x": 65, "y": 200},{"x": 45, "y": 200},{"x": 45, "y": 200},],
-    ]
-
-    this.line6Points = [
-      [{"x": 78, "y": 220},{"x": 78, "y": 220},{"x": 62, "y": 235},{"x": 62, "y": 235},],
-    ]
-
-    this.line7Points = [
-      [{"x": 96, "y": 222},{"x": 96, "y": 222},{"x": 96, "y": 243},{"x": 96, "y": 243},],
-    ]
-
-    this.line8Points = [
-      [{"x": 116, "y": 211},{"x": 116, "y": 211},{"x": 125, "y": 230},{"x": 125, "y": 230},],
+      [{"x": 220, "y": 185},{"x": 220, "y": 185},{"x": 220, "y": 215},{"x": 220, "y": 215},],
     ]
   }
 
@@ -187,21 +160,6 @@ export default class Bolt {
     if (segmentIndex === 2) {
       return this.isOrderInvariantLine(this.line3Points, points, threshold);
     }
-    if (segmentIndex === 3) {
-      return this.isOrderInvariantLine(this.line4Points, points, threshold);
-    }
-    if (segmentIndex === 4) {
-      return this.isOrderInvariantLine(this.line5Points, points, threshold);
-    }
-    if (segmentIndex === 5) {
-      return this.isOrderInvariantLine(this.line6Points, points, threshold);
-    }
-    if (segmentIndex === 6) {
-      return this.isOrderInvariantLine(this.line7Points, points, threshold);
-    }
-    if (segmentIndex === 7) {
-      return this.isOrderInvariantLine(this.line8Points, points, threshold);
-    }
     return false;
   }
 
@@ -212,48 +170,19 @@ export default class Bolt {
       <>
         {(maxSegmentIndex > 0 || reveal) ? 
         <>
-          <Path d={`M ${(130 / 400 * this.length)} ${(200 / 400 * this.length)} C ${(120 / 400 * this.length)} ${(180 / 400 * this.length)}, ${(75 / 400 * this.length)} ${(160 / 400 * this.length)}, ${(65 / 400 * this.length)} ${(200 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-          <Path d={`M ${(65 / 400 * this.length)} ${(200 / 400 * this.length)} C ${(75 / 400 * this.length)} ${(240 / 400 * this.length)}, ${(120 / 400 * this.length)} ${(220 / 400 * this.length)}, ${(130 / 400 * this.length)} ${(200 / 400 * this.length)} `} fill="none" stroke={color} strokeWidth="5"/> 
-          <Path d={`M ${(130 / 400 * this.length)} ${(200 / 400 * this.length)} C ${(140 / 400 * this.length)} ${(170 / 400 * this.length)}, ${(300 / 400 * this.length)} ${(170 / 400 * this.length)}, ${(310 / 400 * this.length)} ${(200 / 400 * this.length)} `} fill="none" stroke={color} strokeWidth="5"/> 
-          <Path d={`M ${(310 / 400 * this.length)} ${(200 / 400 * this.length)} C ${(300 / 400 * this.length)} ${(230 / 400 * this.length)}, ${(140 / 400 * this.length)} ${(230 / 400 * this.length)}, ${(130 / 400 * this.length)} ${(200 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(75 / 400 * this.length)} ${(200 / 400 * this.length)} C ${(75 / 400 * this.length)} ${(200 / 400 * this.length)}, ${(325 / 400 * this.length)} ${(200 / 400 * this.length)}, ${(325 / 400 * this.length)} ${(200 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
         </>
         : <></>}
         {(maxSegmentIndex > 1 || reveal) ? 
         <>
-          <Path d={`M ${(116 / 400 * this.length)} ${(189 / 400 * this.length)} C ${(116 / 400 * this.length)} ${(189 / 400 * this.length)}, ${(125 / 400 * this.length)} ${(170 / 400 * this.length)}, ${(125 / 400 * this.length)} ${(170 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(180 / 400 * this.length)} ${(185 / 400 * this.length)} C ${(180 / 400 * this.length)} ${(185 / 400 * this.length)}, ${(180 / 400 * this.length)} ${(215 / 400 * this.length)}, ${(180 / 400 * this.length)} ${(215 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
         </>
         : <></>}
         {(maxSegmentIndex > 2 || reveal) ? 
         <>
-          <Path d={`M ${(96 / 400 * this.length)} ${(178 / 400 * this.length)} C ${(96 / 400 * this.length)} ${(178 / 400 * this.length)}, ${(96 / 400 * this.length)} ${(157 / 400 * this.length)}, ${(96 / 400 * this.length)} ${(157 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(220 / 400 * this.length)} ${(185 / 400 * this.length)} C ${(220 / 400 * this.length)} ${(185 / 400 * this.length)}, ${(220 / 400 * this.length)} ${(215 / 400 * this.length)}, ${(220 / 400 * this.length)} ${(215 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
         </>
         : <></>}
-        {(maxSegmentIndex > 3 || reveal) ? 
-        <>
-          <Path d={`M ${(78 / 400 * this.length)} ${(180 / 400 * this.length)} C ${(78 / 400 * this.length)} ${(180 / 400 * this.length)}, ${(62 / 400 * this.length)} ${(165 / 400 * this.length)}, ${(62 / 400 * this.length)} ${(165 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-        </>
-        : <></>}
-        {(maxSegmentIndex > 4 || reveal) ? 
-        <>
-          <Path d={`M ${(65 / 400 * this.length)} ${(200 / 400 * this.length)} C ${(65 / 400 * this.length)} ${(200 / 400 * this.length)}, ${(45 / 400 * this.length)} ${(200 / 400 * this.length)}, ${(45 / 400 * this.length)} ${(200 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-        </>
-        : <></>}
-        {(maxSegmentIndex > 5 || reveal) ? 
-        <>
-          <Path d={`M ${(78 / 400 * this.length)} ${(220 / 400 * this.length)} C ${(78 / 400 * this.length)} ${(220 / 400 * this.length)}, ${(62 / 400 * this.length)} ${(235 / 400 * this.length)}, ${(62 / 400 * this.length)} ${(235 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-        </>
-        : <></>}
-        {(maxSegmentIndex > 6 || reveal) ? 
-        <>
-          <Path d={`M ${(96 / 400 * this.length)} ${(222 / 400 * this.length)} C ${(96 / 400 * this.length)} ${(222 / 400 * this.length)}, ${(96 / 400 * this.length)} ${(243 / 400 * this.length)}, ${(96 / 400 * this.length)} ${(243 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-        </>
-        : <></>}
-        {(maxSegmentIndex > 7 || reveal) ? 
-        <>
-          <Path d={`M ${(116 / 400 * this.length)} ${(211 / 400 * this.length)} C ${(116 / 400 * this.length)} ${(211 / 400 * this.length)}, ${(125 / 400 * this.length)} ${(230 / 400 * this.length)}, ${(125 / 400 * this.length)} ${(230 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-        </>
-        : <></>}
-        
       </>
     )
 
