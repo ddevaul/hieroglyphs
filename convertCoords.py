@@ -6,8 +6,9 @@ def convert(input_string):
     # input_string = '<path d={`m ${(100 / 400 * this.length)} ${(100 / 400 * this.length)} c ${(100 / 400 * this.length)} ${(100 / 400 * this.length)}, ${(110 / 400 * this.length)} ${(85 / 400 * this.length)}, ${(130 / 400 * this.length)} ${(72 / 400 * this.length)}`} fill="none" stroke={color} strokewidth="5"/>'
     
     # regular expression pattern to extract numerators
-    pattern = r'\$\{\((\d+) /'
-    
+    # pattern = r'\$\{\((\d+) /'
+    pattern = r'\$\{\((\d+\.\d+|\d+) /'
+
     # find all matches
     numerators = re.findall(pattern, input_string)
     
@@ -21,10 +22,24 @@ def convert(input_string):
     print("],")
     # print or process the numerators
 lines = [
-        '<Path d={`M ${(200 / 400 * this.length)} ${(200 / 400 * this.length)} C ${(200 / 400 * this.length)} ${(200 / 400 * this.length)}, ${(210 / 400 * this.length)} ${(205 / 400 * this.length)}, ${(215 / 400 * this.length)} ${(220 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/>', 
-        '<Path d={`M ${(215 / 400 * this.length)} ${(220 / 400 * this.length)} C ${(215 / 400 * this.length)} ${(220 / 400 * this.length)}, ${(220 / 400 * this.length)} ${(230 / 400 * this.length)}, ${(215 / 400 * this.length)} ${(240 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/>', 
-        '<Path d={`M ${(215 / 400 * this.length)} ${(240 / 400 * this.length)} C ${(215 / 400 * this.length)} ${(240 / 400 * this.length)}, ${(210 / 400 * this.length)} ${(255 / 400 * this.length)}, ${(200 / 400 * this.length)} ${(270 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/>', 
-        '<Path d={`M ${(200 / 400 * this.length)} ${(270 / 400 * this.length)} C ${(200 / 400 * this.length)} ${(270 / 400 * this.length)}, ${(190 / 400 * this.length)} ${(280 / 400 * this.length)}, ${(180 / 400 * this.length)} ${(300 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/>', 
+        '<Path d={`M ${(130 / 400 * this.length)} ${(200 / 400 * this.length)} C ${(120 / 400 * this.length)} ${(180 / 400 * this.length)}, ${(75 / 400 * this.length)} ${(160 / 400 * this.length)}, ${(65 / 400 * this.length)} ${(200 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/>', 
+        '<Path d={`M ${(65 / 400 * this.length)} ${(200 / 400 * this.length)} C ${(75 / 400 * this.length)} ${(240 / 400 * this.length)}, ${(120 / 400 * this.length)} ${(220 / 400 * this.length)}, ${(130 / 400 * this.length)} ${(200 / 400 * this.length)} `} fill="none" stroke={color} strokeWidth="5"/>', 
+        '<Path d={`M ${(130 / 400 * this.length)} ${(200 / 400 * this.length)} C ${(140 / 400 * this.length)} ${(170 / 400 * this.length)}, ${(300 / 400 * this.length)} ${(170 / 400 * this.length)}, ${(310 / 400 * this.length)} ${(200 / 400 * this.length)} `} fill="none" stroke={color} strokeWidth="5"/>', 
+        '<Path d={`M ${(310 / 400 * this.length)} ${(200 / 400 * this.length)} C ${(300 / 400 * this.length)} ${(230 / 400 * this.length)}, ${(140 / 400 * this.length)} ${(230 / 400 * this.length)}, ${(130 / 400 * this.length)} ${(200 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/>', 
+        
+        '<Path d={`M ${(116 / 400 * this.length)} ${(189 / 400 * this.length)} C ${(116 / 400 * this.length)} ${(189 / 400 * this.length)}, ${(125 / 400 * this.length)} ${(170 / 400 * this.length)}, ${(125 / 400 * this.length)} ${(170 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/>', 
+        
+        '<Path d={`M ${(96 / 400 * this.length)} ${(178 / 400 * this.length)} C ${(96 / 400 * this.length)} ${(178 / 400 * this.length)}, ${(96 / 400 * this.length)} ${(157 / 400 * this.length)}, ${(96 / 400 * this.length)} ${(157 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/>', 
+        
+        '<Path d={`M ${(78 / 400 * this.length)} ${(180 / 400 * this.length)} C ${(78 / 400 * this.length)} ${(180 / 400 * this.length)}, ${(62 / 400 * this.length)} ${(165 / 400 * this.length)}, ${(62 / 400 * this.length)} ${(165 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/>', 
+        
+        '<Path d={`M ${(65 / 400 * this.length)} ${(200 / 400 * this.length)} C ${(65 / 400 * this.length)} ${(200 / 400 * this.length)}, ${(45 / 400 * this.length)} ${(200 / 400 * this.length)}, ${(45 / 400 * this.length)} ${(200 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/>', 
+        
+        '<Path d={`M ${(78 / 400 * this.length)} ${(220 / 400 * this.length)} C ${(78 / 400 * this.length)} ${(220 / 400 * this.length)}, ${(62 / 400 * this.length)} ${(235 / 400 * this.length)}, ${(62 / 400 * this.length)} ${(235 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/>', 
+        
+        '<Path d={`M ${(96 / 400 * this.length)} ${(222 / 400 * this.length)} C ${(96 / 400 * this.length)} ${(222 / 400 * this.length)}, ${(96 / 400 * this.length)} ${(243 / 400 * this.length)}, ${(96 / 400 * this.length)} ${(243 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/>', 
+        
+        '<Path d={`M ${(116 / 400 * this.length)} ${(211 / 400 * this.length)} C ${(116 / 400 * this.length)} ${(211 / 400 * this.length)}, ${(125 / 400 * this.length)} ${(230 / 400 * this.length)}, ${(125 / 400 * this.length)} ${(230 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/>', 
 ]
 
 for line in lines:
