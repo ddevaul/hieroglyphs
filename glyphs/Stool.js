@@ -8,16 +8,17 @@ import {
 } from 'react-native';
 import Svg, { Polyline, Line, Circle, Path } from 'react-native-svg';
 
-export default class Foot {
+export default class Stool {
   constructor(length) {
     this.length = length;
-    this.name = 'Foot';
+    this.name = 'Stool';
     this.tolerance = 15;
     this.strokeWidth = 5;
     this.line1Points = [
-      [{"x": 230, "y": 80},{"x": 230, "y": 80},{"x": 230, "y": 330},{"x": 230, "y": 330},],
-      [{"x": 230, "y": 330},{"x": 230, "y": 330},{"x": 120, "y": 330},{"x": 120, "y": 330},],
-      [{"x": 120, "y": 330},{"x": 120, "y": 330},{"x": 230, "y": 270},{"x": 230, "y": 270},],
+      [{"x": 110, "y": 95},{"x": 110, "y": 95},{"x": 290, "y": 95},{"x": 290, "y": 95},],
+      [{"x": 288, "y": 95},{"x": 288, "y": 95},{"x": 288, "y": 305},{"x": 288, "y": 305},],
+      [{"x": 290, "y": 305},{"x": 290, "y": 305},{"x": 110, "y": 305},{"x": 110, "y": 305},],
+      [{"x": 112, "y": 305},{"x": 112, "y": 305},{"x": 112, "y": 95},{"x": 112, "y": 95},],
     ]
   }
 
@@ -33,6 +34,27 @@ export default class Foot {
 
   slope = (point1, point2) => {
     return [point2.x - point1.x, point2.y - point1.y];
+  }
+
+  isOrderInvariantLine = (bezierPoints, points, threshold) => {
+    let bezierReordered = bezierPoints;
+    for (let i = 0; i < bezierReordered.length; i++) {
+      let result = this.isDirectionInvariant(bezierReordered, points, threshold);
+      if (result === true) return true;
+      let first = bezierReordered.shift();
+      bezierReordered.push(first);
+    }
+    return false;
+  }
+
+  isDirectionInvariant = (bezierPoints, points, threshold) => {
+    let normalResult = this.isLine(bezierPoints, points, threshold);
+    if (normalResult === true) return true;
+    let reverseBezierPoints = []
+    for (let i = 0; i < bezierPoints.length; i++) {
+      reverseBezierPoints[bezierPoints.length - i - 1] = bezierPoints[i].reverse();
+    }
+    return this.isLine(reverseBezierPoints, points, threshold);
   }
 
   isLine = (bezierPoints, points, threshold) => {
@@ -126,9 +148,10 @@ export default class Foot {
   }
 
   inBounds = (points, segmentIndex) => {
-    let threshold = 0.7;
+    let threshold = 0.6;
     if (segmentIndex === 0) {
-      return this.isLine(this.line1Points, points, threshold);
+      // check rotations
+      return this.isOrderInvariantLine(this.line1Points, points, threshold);
     }
     return false;
   }
@@ -140,9 +163,10 @@ export default class Foot {
       <>
         {(maxSegmentIndex > 0 || reveal) ? 
         <>
-          <Path d={`M ${(230 / 400 * this.length)} ${(80 / 400 * this.length)} C ${(230 / 400 * this.length)} ${(80 / 400 * this.length)}, ${(230 / 400 * this.length)} ${(330 / 400 * this.length)}, ${(230 / 400 * this.length)} ${(330 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-          <Path d={`M ${(230 / 400 * this.length)} ${(330 / 400 * this.length)} C ${(230 / 400 * this.length)} ${(330 / 400 * this.length)}, ${(120 / 400 * this.length)} ${(330 / 400 * this.length)}, ${(120 / 400 * this.length)} ${(330 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-          <Path d={`M ${(120 / 400 * this.length)} ${(330 / 400 * this.length)} C ${(120 / 400 * this.length)} ${(330 / 400 * this.length)}, ${(230 / 400 * this.length)} ${(270 / 400 * this.length)}, ${(230 / 400 * this.length)} ${(270 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(110 / 400 * this.length)} ${(95 / 400 * this.length)} C ${(110 / 400 * this.length)} ${(95 / 400 * this.length)}, ${(290 / 400 * this.length)} ${(95 / 400 * this.length)}, ${(290 / 400 * this.length)} ${(95 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(288 / 400 * this.length)} ${(95 / 400 * this.length)} C ${(288 / 400 * this.length)} ${(95 / 400 * this.length)}, ${(288 / 400 * this.length)} ${(305 / 400 * this.length)}, ${(288 / 400 * this.length)} ${(305 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(290 / 400 * this.length)} ${(305 / 400 * this.length)} C ${(290 / 400 * this.length)} ${(305 / 400 * this.length)}, ${(110 / 400 * this.length)} ${(305 / 400 * this.length)}, ${(110 / 400 * this.length)} ${(305 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(112 / 400 * this.length)} ${(305 / 400 * this.length)} C ${(112 / 400 * this.length)} ${(305 / 400 * this.length)}, ${(112 / 400 * this.length)} ${(95 / 400 * this.length)}, ${(112 / 400 * this.length)} ${(95 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
         </>
           : <></>}
       </>

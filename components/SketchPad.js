@@ -13,6 +13,14 @@ import Aleph from '../glyphs/Aleph';
 import Reed from '../glyphs/Reed';
 import Arm from '../glyphs/Arm';
 import Quail from '../glyphs/Quail';
+import Foot from '../glyphs/Foot';
+import Stool from '../glyphs/Stool';
+import Snake from '../glyphs/Snake';
+import Owl from '../glyphs/Owl';
+import Water from '../glyphs/Water';
+import Mouth from '../glyphs/Mouth';
+import Courtyard from '../glyphs/Courtyard';
+import Wick from '../glyphs/Wick';
 
 const GesturePath = ({ length, paths, color, glyph, segmentIndex, reveal }) => {
   if (paths[0] == []) {
@@ -87,10 +95,10 @@ export default SketchPad = () => {
   const SCALE_FACTOR = 0.95;
   const { width, height } = Dimensions.get('window');
   const length = width * SCALE_FACTOR;
-  const [glyph, setGlyph] = useState(new Quail(length));
+  const [glyph, setGlyph] = useState(new Wick(length));
   const [paths, setPaths] = useState([[]]);
   const [segmentIndex, setSegmentIndex] = useState(0);
-  const [reveal, setReveal] = useState(false);
+  const [reveal, setReveal] = useState(true);
 
 
   const updatePath = (coords, finished) => {
@@ -106,7 +114,7 @@ export default SketchPad = () => {
       setPaths(ppaths => {
         const newPaths = [...ppaths];
         newPaths.push([])
-        // return newPaths;
+        return newPaths; // for testing
         newPaths[newPaths.length - 1] = []
         return [[]];
       })
@@ -127,17 +135,49 @@ export default SketchPad = () => {
 
   const selectGlyph = (name) => {
     clearPaths();
-    if (name === 'Bread') {
-      setGlyph(new T(length));
-    } else if (name === 'Aleph') {
-      setGlyph(new Aleph(length));
-    } else if (name === 'Reed') {
-      setGlyph(new Reed(length));
-    } else if (name === 'Arm') {
-      setGlyph(new Arm(length));
-    } else if (name === 'Quail') {
-      setGlyph(new Quail(length));
-    }
+    switch (name) {
+      case 'Bread':
+        setGlyph(new T(length));
+        break;
+      case 'Aleph':
+        setGlyph(new Aleph(length));
+        break;
+      case 'Reed':
+        setGlyph(new Reed(length));
+        break;
+      case 'Arm':
+        setGlyph(new Arm(length));
+        break;
+      case 'Quail':
+        setGlyph(new Quail(length));
+        break;
+      case 'Foot':
+        setGlyph(new Foot(length));
+        break;
+      case 'Stool': 
+        setGlyph(new Stool(length));
+        break;
+      case 'Snake':
+        setGlyph(new Snake(length));
+        break;
+      case 'Owl':
+        setGlyph(new Owl(length));
+        break;
+      case 'Water':
+        setGlyph(new Water(length));
+        break;
+      case 'Mouth':
+        setGlyph(new Mouth(length));
+        break;
+      case 'Courtyard':
+        setGlyph(new Courtyard(length));
+        break;
+      case 'Wick':
+          setGlyph(new Wick(length));
+          break;
+      default: 
+        setGlyph(new Quail(length));
+    } 
   }
 
   return (
@@ -148,11 +188,21 @@ export default SketchPad = () => {
         <GestureRecorder paths={paths} onPathChanged={updatePath} segmentIndex={segmentIndex} />
       </View>
       <View>
-        <Button title="Arm" onPress={() => selectGlyph('Arm')}></Button>
-        <Button title="Aleph" onPress={() => selectGlyph('Aleph')}></Button>
-        <Button title="Bread (T)" onPress={() => selectGlyph('Bread')}></Button>
+        <Button title="Arm (')" onPress={() => selectGlyph('Arm')}></Button>
+        {/* <Button title="Aleph" onPress={() => selectGlyph('Aleph')}></Button> */}
+        {/* <Button title="Bread (T)" onPress={() => selectGlyph('Bread')}></Button> */}
         <Button title="Reed (M)" onPress={() => selectGlyph('Reed')}></Button>
         <Button title="Quail (W)" onPress={() => selectGlyph('Quail')}></Button>
+        <Button title="Foot (b)" onPress={() => selectGlyph('Foot')}></Button>
+        <Button title="Stool (p)" onPress={() => selectGlyph('Stool')}></Button>
+        <Button title="Snake (f)" onPress={() => selectGlyph('Snake')}></Button>
+        {/* <Button title="Owl (m)" onPress={() => selectGlyph('Owl')}></Button> */}
+        {/* <Button title="Water (n)" onPress={() => selectGlyph('Water')}></Button> */}
+        {/* <Button title="Mouth (r)" onPress={() => selectGlyph('Mouth')}></Button> */}
+        <Button title="Courtyard (h)" onPress={() => selectGlyph('Courtyard')}></Button>
+        <Button title="Wick" onPress={() => selectGlyph('Wick')}></Button>
+
+
 
         <Button title="Reveal" onPress={() => setReveal(r => !r)}></Button>
       </View>
@@ -178,6 +228,8 @@ const styles = StyleSheet.create({
   },
   footer: {
     backgroundColor: "red", 
+    display: "flex",
+    flexDirection: "row",
   },
   button: {
     paddingBottom: "5px",
