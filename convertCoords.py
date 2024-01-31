@@ -22,9 +22,10 @@ def convert(input_string):
     print("],")
     # print or process the numerators
 lines = [
-        '<Path d={`M ${(75 / 400 * this.length)} ${(200 / 400 * this.length)} C ${(75 / 400 * this.length)} ${(200 / 400 * this.length)}, ${(325 / 400 * this.length)} ${(200 / 400 * this.length)}, ${(325 / 400 * this.length)} ${(200 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/>', 
-        '          <Path d={`M ${(180 / 400 * this.length)} ${(185 / 400 * this.length)} C ${(180 / 400 * this.length)} ${(185 / 400 * this.length)}, ${(180 / 400 * this.length)} ${(215 / 400 * this.length)}, ${(180 / 400 * this.length)} ${(215 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> ',
-        '          <Path d={`M ${(220 / 400 * this.length)} ${(185 / 400 * this.length)} C ${(220 / 400 * this.length)} ${(185 / 400 * this.length)}, ${(220 / 400 * this.length)} ${(215 / 400 * this.length)}, ${(220 / 400 * this.length)} ${(215 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> '
+        '<Path d={`M ${(135 / 400 * this.length)} ${(180 / 400 * this.length)} C ${(135 / 400 * this.length)} ${(180 / 400 * this.length)}, ${(280 / 400 * this.length)} ${(180 / 400 * this.length)}, ${(280 / 400 * this.length)} ${(180 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/>', 
+        '<Path d={`M ${(280 / 400 * this.length)} ${(180 / 400 * this.length)} C ${(291 / 400 * this.length)} ${(180 / 400 * this.length)}, ${(300 / 400 * this.length)} ${(189 / 400 * this.length)}, ${(300 / 400 * this.length)} ${(200 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/>', 
+        '<Path d={`M ${(300 / 400 * this.length)} ${(200 / 400 * this.length)} C ${(300 / 400 * this.length)} ${(211 / 400 * this.length)}, ${(291 / 400 * this.length)} ${(220 / 400 * this.length)}, ${(280 / 400 * this.length)} ${(220 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/>', 
+        '<Path d={`M ${(135 / 400 * this.length)} ${(220 / 400 * this.length)} C ${(135 / 400 * this.length)} ${(220 / 400 * this.length)}, ${(280 / 400 * this.length)} ${(220 / 400 * this.length)}, ${(280 / 400 * this.length)} ${(220 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/>', 
 ]
 
 for line in lines:

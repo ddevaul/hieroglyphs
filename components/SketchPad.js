@@ -24,6 +24,12 @@ import Wick from '../glyphs/Wick';
 import Placenta from '../glyphs/Placenta';
 import Belly from '../glyphs/Belly';
 import Bolt from '../glyphs/Bolt';
+import Cloth from '../glyphs/Cloth';
+import Pool from '../glyphs/Pool';
+import Hill from '../glyphs/Hill';
+import Basket from '../glyphs/Basket';
+import Ringstand from '../glyphs/Ringstand';
+import TetheringRope from '../glyphs/TetheringRope';
 
 const GesturePath = ({ length, paths, color, glyph, segmentIndex, reveal }) => {
   if (paths[0] == []) {
@@ -98,7 +104,7 @@ export default SketchPad = () => {
   const SCALE_FACTOR = 0.95;
   const { width, height } = Dimensions.get('window');
   const length = width * SCALE_FACTOR;
-  const [glyph, setGlyph] = useState(new Bolt(length));
+  const [glyph, setGlyph] = useState(new TetheringRope(length));
   const [paths, setPaths] = useState([[]]);
   const [segmentIndex, setSegmentIndex] = useState(0);
   const [reveal, setReveal] = useState(true);
@@ -117,7 +123,7 @@ export default SketchPad = () => {
       setPaths(ppaths => {
         const newPaths = [...ppaths];
         newPaths.push([])
-        // return newPaths; // for testing
+        // return newPaths; // uncomment for testing
         newPaths[newPaths.length - 1] = []
         return [[]];
       })
@@ -187,6 +193,24 @@ export default SketchPad = () => {
       case 'Bolt':
         setGlyph(new Bolt(length));
         break;
+      case 'Cloth':
+        setGlyph(new Cloth(length));
+        break;
+      case 'Pool':
+        setGlyph(new Pool(length));
+        break;
+      case 'Hill':
+        setGlyph(new Hill(length));
+        break;
+      case 'Basket':
+        setGlyph(new Basket(length));
+        break;
+      case 'Ringstand':
+        setGlyph(new Ringstand(length));
+        break;
+      case 'TetheringRope':
+        setGlyph(new TetheringRope(length));
+        break;
       default: 
         setGlyph(new Quail(length));
     } 
@@ -215,8 +239,20 @@ export default SketchPad = () => {
         <Button title="Wick" onPress={() => selectGlyph('Wick')}></Button>
         <Button title="Placenta" onPress={() => selectGlyph('Placenta')}></Button>
          */}
+        {/* <Button title="Belly" onPress={() => selectGlyph('Belly')}></Button> */}
+        {/* <Button title="Bolt" onPress={() => selectGlyph('Bolt')}></Button> */}
+        {/* <Button title="Cloth" onPress={() => selectGlyph('Cloth')}></Button> */}
+        {/* <Button title="Pool" onPress={() => selectGlyph('Pool')}></Button> */}
+        {/* <Button title="Hill" onPress={() => selectGlyph('Hill')}></Button> */}
+        {/* <Button title="Basket" onPress={() => selectGlyph('Basket')}></Button> */}
+        <Button title="Ringstand" onPress={() => selectGlyph('Ringstand')}></Button>
+        <Button title="Tethering Rope" onPress={() => selectGlyph('TetheringRope')}></Button>
 
-        <Button title="Bolt" onPress={() => selectGlyph('Bolt')}></Button>
+
+
+
+
+
 
         <Button title="Reveal" onPress={() => setReveal(r => !r)}></Button>
       </View>

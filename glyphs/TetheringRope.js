@@ -8,27 +8,29 @@ import {
 } from 'react-native';
 import Svg, { Polyline, Line, Circle, Path } from 'react-native-svg';
 
-export default class Ringstand {
+export default class TetheringRope {
   constructor(length) {
     this.length = length;
-    this.name = 'Ringstand';
+    this.name = 'Tethering Rope';
     this.tolerance = 15;
     this.strokeWidth = 5;
     this.line1Points = [
-      [{"x": 150, "y": 125},{"x": 150, "y": 125},{"x": 250, "y": 125},{"x": 250, "y": 125},],
-      [{"x": 150, "y": 125},{"x": 150, "y": 125},{"x": 150, "y": 135},{"x": 150, "y": 135},],
-      [{"x": 150, "y": 135},{"x": 150, "y": 135},{"x": 105, "y": 275},{"x": 105, "y": 275},],
-      [{"x": 105, "y": 275},{"x": 120, "y": 300},{"x": 280, "y": 300},{"x": 295, "y": 275},],
-      [{"x": 295, "y": 275},{"x": 295, "y": 275},{"x": 250, "y": 135},{"x": 250, "y": 135},],
-      [{"x": 250, "y": 135},{"x": 250, "y": 135},{"x": 250, "y": 125},{"x": 250, "y": 125},],
+      [{"x": 135, "y": 180},{"x": 135, "y": 185.5},{"x": 125.5, "y": 190},{"x": 120, "y": 190},],
+      [{"x": 120, "y": 190},{"x": 114.5, "y": 190},{"x": 105, "y": 190},{"x": 105, "y": 180},],
+      [{"x": 105, "y": 180},{"x": 105, "y": 170},{"x": 114.5, "y": 170},{"x": 120, "y": 170},],
+      [{"x": 120, "y": 170},{"x": 125.5, "y": 170},{"x": 135, "y": 174.5},{"x": 135, "y": 180},],
     ]
     this.line2Points = [
-      [{"x": 199, "y": 191},{"x": 199, "y": 191},{"x": 181, "y": 249},{"x": 181, "y": 249},],
-      [{"x": 181, "y": 249},{"x": 181, "y": 249},{"x": 180, "y": 250},{"x": 181, "y": 251},],
-      [{"x": 181, "y": 251},{"x": 181, "y": 251},{"x": 219, "y": 250},{"x": 219, "y": 250},],
-      [{"x": 219, "y": 250},{"x": 219, "y": 250},{"x": 220, "y": 250},{"x": 219, "y": 249},],
-      [{"x": 219, "y": 249},{"x": 219, "y": 249},{"x": 201, "y": 191},{"x": 201, "y": 191},],
-      [{"x": 201, "y": 191},{"x": 201, "y": 191},{"x": 200, "y": 190},{"x": 199, "y": 191},],
+      [{"x": 135, "y": 220},{"x": 135, "y": 225.5},{"x": 125.5, "y": 230},{"x": 120, "y": 230},],
+      [{"x": 120, "y": 230},{"x": 114.5, "y": 230},{"x": 105, "y": 230},{"x": 105, "y": 220},],
+      [{"x": 105, "y": 220},{"x": 105, "y": 210},{"x": 114.5, "y": 210},{"x": 120, "y": 210},],
+      [{"x": 120, "y": 210},{"x": 125.5, "y": 210},{"x": 135, "y": 214.5},{"x": 135, "y": 220},],
+    ]
+    this.line3Points = [
+      [{"x": 135, "y": 180},{"x": 135, "y": 180},{"x": 280, "y": 180},{"x": 280, "y": 180},],
+      [{"x": 280, "y": 180},{"x": 291, "y": 180},{"x": 300, "y": 189},{"x": 300, "y": 200},],
+      [{"x": 300, "y": 200},{"x": 300, "y": 211},{"x": 291, "y": 220},{"x": 280, "y": 220},],
+      [{"x": 280, "y": 220},{"x": 280, "y": 220},{"x": 135, "y": 220},{"x": 135, "y": 220},],
     ]
   }
 
@@ -152,12 +154,13 @@ export default class Ringstand {
       avgDotProduct += dotProduct; 
     }
     avgDotProduct /= points.length;
+    console.log("avg similarity", avgDotProduct);
     if (avgDotProduct > threshold) return true;
     return false;
   }
 
   inBounds = (points, segmentIndex) => {
-    let threshold = 0.6;
+    let threshold = 0.42;
     if (segmentIndex === 0) {
       // check rotations
       return this.isOrderInvariantLine(this.line1Points, points, threshold);
@@ -165,6 +168,10 @@ export default class Ringstand {
     else if (segmentIndex === 1) {
       // check rotations
       return this.isOrderInvariantLine(this.line2Points, points, threshold);
+    }
+    else if (segmentIndex === 2) {
+      // check rotations
+      return this.isOrderInvariantLine(this.line3Points, points, threshold);
     }
     return false;
   }
@@ -176,22 +183,28 @@ export default class Ringstand {
       <>
         {(maxSegmentIndex > 0 || reveal) ? 
         <>
-          <Path d={`M ${(150 / 400 * this.length)} ${(125 / 400 * this.length)} C ${(150 / 400 * this.length)} ${(125 / 400 * this.length)}, ${(250 / 400 * this.length)} ${(125 / 400 * this.length)}, ${(250 / 400 * this.length)} ${(125 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-          <Path d={`M ${(150 / 400 * this.length)} ${(125 / 400 * this.length)} C ${(150 / 400 * this.length)} ${(125 / 400 * this.length)}, ${(150 / 400 * this.length)} ${(135 / 400 * this.length)}, ${(150 / 400 * this.length)} ${(135 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-          <Path d={`M ${(150 / 400 * this.length)} ${(135 / 400 * this.length)} C ${(150 / 400 * this.length)} ${(135 / 400 * this.length)}, ${(105 / 400 * this.length)} ${(275 / 400 * this.length)}, ${(105 / 400 * this.length)} ${(275 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-          <Path d={`M ${(105 / 400 * this.length)} ${(275 / 400 * this.length)} C ${(120 / 400 * this.length)} ${(300 / 400 * this.length)}, ${(280 / 400 * this.length)} ${(300 / 400 * this.length)}, ${(295 / 400 * this.length)} ${(275 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-          <Path d={`M ${(295 / 400 * this.length)} ${(275 / 400 * this.length)} C ${(295 / 400 * this.length)} ${(275 / 400 * this.length)}, ${(250 / 400 * this.length)} ${(135 / 400 * this.length)}, ${(250 / 400 * this.length)} ${(135 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-          <Path d={`M ${(250 / 400 * this.length)} ${(135 / 400 * this.length)} C ${(250 / 400 * this.length)} ${(135 / 400 * this.length)}, ${(250 / 400 * this.length)} ${(125 / 400 * this.length)}, ${(250 / 400 * this.length)} ${(125 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(135 / 400 * this.length)} ${(180 / 400 * this.length)} C ${(135 / 400 * this.length)} ${(185.5 / 400 * this.length)}, ${(125.5 / 400 * this.length)} ${(190 / 400 * this.length)}, ${(120 / 400 * this.length)} ${(190 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(120 / 400 * this.length)} ${(190 / 400 * this.length)} C ${(114.5 / 400 * this.length)} ${(190 / 400 * this.length)}, ${(105 / 400 * this.length)} ${(190 / 400 * this.length)}, ${(105 / 400 * this.length)} ${(180 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(105 / 400 * this.length)} ${(180 / 400 * this.length)} C ${(105 / 400 * this.length)} ${(170 / 400 * this.length)}, ${(114.5 / 400 * this.length)} ${(170 / 400 * this.length)}, ${(120 / 400 * this.length)} ${(170 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(120 / 400 * this.length)} ${(170 / 400 * this.length)} C ${(125.5 / 400 * this.length)} ${(170 / 400 * this.length)}, ${(135 / 400 * this.length)} ${(174.5 / 400 * this.length)}, ${(135 / 400 * this.length)} ${(180 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
         </>
         : <></>}
         {(maxSegmentIndex > 1 || reveal) ? 
         <>
-          <Path d={`M ${(199 / 400 * this.length)} ${(191 / 400 * this.length)} C ${(199 / 400 * this.length)} ${(191 / 400 * this.length)}, ${(181 / 400 * this.length)} ${(249 / 400 * this.length)}, ${(181 / 400 * this.length)} ${(249 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-          <Path d={`M ${(181 / 400 * this.length)} ${(249 / 400 * this.length)} C ${(181 / 400 * this.length)} ${(249 / 400 * this.length)}, ${(180 / 400 * this.length)} ${(250 / 400 * this.length)}, ${(181 / 400 * this.length)} ${(251 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-          <Path d={`M ${(181 / 400 * this.length)} ${(251 / 400 * this.length)} C ${(181 / 400 * this.length)} ${(251 / 400 * this.length)}, ${(219 / 400 * this.length)} ${(250 / 400 * this.length)}, ${(219 / 400 * this.length)} ${(250 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-          <Path d={`M ${(219 / 400 * this.length)} ${(250 / 400 * this.length)} C ${(219 / 400 * this.length)} ${(250 / 400 * this.length)}, ${(220 / 400 * this.length)} ${(250 / 400 * this.length)}, ${(219 / 400 * this.length)} ${(249 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-          <Path d={`M ${(219 / 400 * this.length)} ${(249 / 400 * this.length)} C ${(219 / 400 * this.length)} ${(249 / 400 * this.length)}, ${(201 / 400 * this.length)} ${(191 / 400 * this.length)}, ${(201 / 400 * this.length)} ${(191 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
-          <Path d={`M ${(201 / 400 * this.length)} ${(191 / 400 * this.length)} C ${(201 / 400 * this.length)} ${(191 / 400 * this.length)}, ${(200 / 400 * this.length)} ${(190 / 400 * this.length)}, ${(199 / 400 * this.length)} ${(191 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(135 / 400 * this.length)} ${(220 / 400 * this.length)} C ${(135 / 400 * this.length)} ${(225.5 / 400 * this.length)}, ${(125.5 / 400 * this.length)} ${(230 / 400 * this.length)}, ${(120 / 400 * this.length)} ${(230 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(120 / 400 * this.length)} ${(230 / 400 * this.length)} C ${(114.5 / 400 * this.length)} ${(230 / 400 * this.length)}, ${(105 / 400 * this.length)} ${(230 / 400 * this.length)}, ${(105 / 400 * this.length)} ${(220 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(105 / 400 * this.length)} ${(220 / 400 * this.length)} C ${(105 / 400 * this.length)} ${(210 / 400 * this.length)}, ${(114.5 / 400 * this.length)} ${(210 / 400 * this.length)}, ${(120 / 400 * this.length)} ${(210 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(120 / 400 * this.length)} ${(210 / 400 * this.length)} C ${(125.5 / 400 * this.length)} ${(210 / 400 * this.length)}, ${(135 / 400 * this.length)} ${(214.5 / 400 * this.length)}, ${(135 / 400 * this.length)} ${(220 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+        </>
+        : <></>}
+
+        {(maxSegmentIndex > 2 || reveal) ? 
+        <>
+          <Path d={`M ${(135 / 400 * this.length)} ${(180 / 400 * this.length)} C ${(135 / 400 * this.length)} ${(180 / 400 * this.length)}, ${(280 / 400 * this.length)} ${(180 / 400 * this.length)}, ${(280 / 400 * this.length)} ${(180 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(280 / 400 * this.length)} ${(180 / 400 * this.length)} C ${(291 / 400 * this.length)} ${(180 / 400 * this.length)}, ${(300 / 400 * this.length)} ${(189 / 400 * this.length)}, ${(300 / 400 * this.length)} ${(200 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(300 / 400 * this.length)} ${(200 / 400 * this.length)} C ${(300 / 400 * this.length)} ${(211 / 400 * this.length)}, ${(291 / 400 * this.length)} ${(220 / 400 * this.length)}, ${(280 / 400 * this.length)} ${(220 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          <Path d={`M ${(280 / 400 * this.length)} ${(220 / 400 * this.length)} C ${(280 / 400 * this.length)} ${(220 / 400 * this.length)}, ${(135 / 400 * this.length)} ${(220 / 400 * this.length)}, ${(135 / 400 * this.length)} ${(220 / 400 * this.length)}`} fill="none" stroke={color} strokeWidth="5"/> 
+          
         </>
         : <></>}
       </>
