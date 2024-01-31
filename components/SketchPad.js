@@ -30,6 +30,7 @@ import Hill from '../glyphs/Hill';
 import Basket from '../glyphs/Basket';
 import Ringstand from '../glyphs/Ringstand';
 import TetheringRope from '../glyphs/TetheringRope';
+import Hand from '../glyphs/Hand';
 
 const GesturePath = ({ length, paths, color, glyph, segmentIndex, reveal }) => {
   if (paths[0] == []) {
@@ -104,7 +105,7 @@ export default SketchPad = () => {
   const SCALE_FACTOR = 0.95;
   const { width, height } = Dimensions.get('window');
   const length = width * SCALE_FACTOR;
-  const [glyph, setGlyph] = useState(new TetheringRope(length));
+  const [glyph, setGlyph] = useState(new Hand(length));
   const [paths, setPaths] = useState([[]]);
   const [segmentIndex, setSegmentIndex] = useState(0);
   const [reveal, setReveal] = useState(true);
@@ -211,6 +212,9 @@ export default SketchPad = () => {
       case 'TetheringRope':
         setGlyph(new TetheringRope(length));
         break;
+      case 'Hand':
+        setGlyph(new Hand(length));
+        break;
       default: 
         setGlyph(new Quail(length));
     } 
@@ -245,8 +249,10 @@ export default SketchPad = () => {
         {/* <Button title="Pool" onPress={() => selectGlyph('Pool')}></Button> */}
         {/* <Button title="Hill" onPress={() => selectGlyph('Hill')}></Button> */}
         {/* <Button title="Basket" onPress={() => selectGlyph('Basket')}></Button> */}
-        <Button title="Ringstand" onPress={() => selectGlyph('Ringstand')}></Button>
-        <Button title="Tethering Rope" onPress={() => selectGlyph('TetheringRope')}></Button>
+        {/* <Button title="Ringstand" onPress={() => selectGlyph('Ringstand')}></Button> */}
+        {/* <Button title="Tethering Rope" onPress={() => selectGlyph('TetheringRope')}></Button> */}
+        <Button title="Hand" onPress={() => selectGlyph('Hand')}></Button>
+
 
 
 
