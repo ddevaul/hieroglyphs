@@ -154,7 +154,6 @@ export default class TetheringRope {
       avgDotProduct += dotProduct; 
     }
     avgDotProduct /= points.length;
-    console.log("avg similarity", avgDotProduct);
     if (avgDotProduct > threshold) return true;
     return false;
   }
