@@ -14,6 +14,7 @@ export default class Cobra {
     this.name = 'Cobra';
     this.tolerance = 15;
     this.strokeWidth = 5;
+    this.numSegments = 2;
     this.line1Points = [
       [{"x": 95, "y": 110},{"x": 95, "y": 115.5},{"x": 85.5, "y": 120},{"x": 80, "y": 120},],
       [{"x": 80, "y": 120},{"x": 74.5, "y": 120},{"x": 65, "y": 115.5},{"x": 65, "y": 110},],
@@ -171,6 +172,7 @@ export default class Cobra {
 
   shape = (color, maxSegmentIndex, reveal) => {
     color = reveal ? 'red' : color;
+    // color = color;
 
     return (
       <>

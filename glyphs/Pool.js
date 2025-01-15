@@ -14,6 +14,7 @@ export default class Pool {
     this.name = 'Pool';
     this.tolerance = 15;
     this.strokeWidth = 5;
+    this.numSegments = 1;
     this.line1Points = [
       [{"x": 75, "y": 165},{"x": 75, "y": 165},{"x": 325, "y": 165},{"x": 325, "y": 165},],
       [{"x": 325, "y": 165},{"x": 325, "y": 165},{"x": 325, "y": 235},{"x": 325, "y": 235},],

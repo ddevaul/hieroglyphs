@@ -14,6 +14,7 @@ export default class Water {
     this.name = 'Water';
     this.tolerance = 15;
     this.strokeWidth = 5;
+    this.numSegments = 2;
     this.line1Points = [
       [{"x": 80, "y": 170},{"x": 80, "y": 170},{"x": 55, "y": 240},{"x": 55, "y": 240},],
     ]

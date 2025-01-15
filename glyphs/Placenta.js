@@ -14,6 +14,7 @@ export default class Placenta {
     this.name = 'Placenta';
     this.tolerance = 15;
     this.strokeWidth = 5;
+    this.numSegments = 5;
     this.line1Points = [
       [{"x": 200, "y": 100},{"x": 255, "y": 100},{"x": 300, "y": 155},{"x": 300, "y": 200},],
       [{"x": 300, "y": 200},{"x": 300, "y": 255},{"x": 255, "y": 300},{"x": 200, "y": 300},],

@@ -14,6 +14,7 @@ export default class Cloth {
     this.name = 'Cloth';
     this.tolerance = 15;
     this.strokeWidth = 5;
+    this.numSegments = 2;
     this.line1Points = [
       [{"x": 175, "y": 125},{"x": 175, "y": 125},{"x": 175, "y": 350},{"x": 175, "y": 350},],
     ]

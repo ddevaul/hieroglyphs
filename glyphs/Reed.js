@@ -14,6 +14,7 @@ export default class Reed {
     this.name = 'Reed';
     this.tolerance = 15;
     this.strokeWidth = 5;
+    this.numSegments = 2;
     this.line1Points = [[{"x": 180, "y": 30}, {"x": 220, "y": 60}, {"x": 220, "y": 60}, {"x": 220, "y": 60}], [{"x": 220, "y": 60}, {"x": 220, "y": 360}, {"x": 220, "y": 360}, {"x": 220, "y": 360}]] // all the points for all the bezier curves
     this.line2Points = [[{"x": 180, "y": 30}, {"x": 140, "y": 240}, {"x": 140, "y": 240}, {"x": 140, "y": 240}], [{"x": 140, "y": 240}, {"x": 220, "y": 270}, {"x": 220, "y": 270}, {"x": 220, "y": 270}]] // all the points for all the bezier curves
   }

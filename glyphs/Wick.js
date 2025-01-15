@@ -14,6 +14,7 @@ export default class Wick {
     this.name = 'Wick';
     this.tolerance = 15;
     this.strokeWidth = 5;
+    this.numSegments = 3;
     this.line1Points = [
       [{"x": 200, "y": 140},{"x": 200, "y": 140},{"x": 180, "y": 125},{"x": 180, "y": 100},],
       [{"x": 180, "y": 100},{"x": 180, "y": 100},{"x": 180, "y": 75},{"x": 200, "y": 75},],

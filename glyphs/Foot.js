@@ -14,6 +14,7 @@ export default class Foot {
     this.name = 'Foot';
     this.tolerance = 15;
     this.strokeWidth = 5;
+    this.numSegments = 1;
     this.line1Points = [
       [{"x": 230, "y": 80},{"x": 230, "y": 80},{"x": 230, "y": 330},{"x": 230, "y": 330},],
       [{"x": 230, "y": 330},{"x": 230, "y": 330},{"x": 120, "y": 330},{"x": 120, "y": 330},],

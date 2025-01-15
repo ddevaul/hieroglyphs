@@ -14,6 +14,7 @@ export default class Hill {
     this.name = 'Hill';
     this.tolerance = 15;
     this.strokeWidth = 5;
+    this.numSegments = 1;
     this.line1Points = [
       [{"x": 100, "y": 290},{"x": 175, "y": 250},{"x": 205, "y": 220},{"x": 220, "y": 140},],
       [{"x": 220, "y": 140},{"x": 230, "y": 100},{"x": 270, "y": 90},{"x": 280, "y": 140},],

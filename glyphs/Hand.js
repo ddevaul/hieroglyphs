@@ -14,6 +14,7 @@ export default class Hand {
     this.name = 'Hand';
     this.tolerance = 15;
     this.strokeWidth = 5;
+    this.numSegments = 1;
     this.line1Points = [
       [{"x": 190, "y": 190},{"x": 190, "y": 190},{"x": 100, "y": 190},{"x": 100, "y": 190},],
       [{"x": 100, "y": 190},{"x": 83.5, "y": 190},{"x": 70, "y": 203.5},{"x": 70, "y": 220},],

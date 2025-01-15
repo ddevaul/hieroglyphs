@@ -14,6 +14,7 @@ export default class Stool {
     this.name = 'Stool';
     this.tolerance = 15;
     this.strokeWidth = 5;
+    this.numSegments = 1;
     this.line1Points = [
       [{"x": 110, "y": 95},{"x": 110, "y": 95},{"x": 290, "y": 95},{"x": 290, "y": 95},],
       [{"x": 288, "y": 95},{"x": 288, "y": 95},{"x": 288, "y": 305},{"x": 288, "y": 305},],

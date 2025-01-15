@@ -14,6 +14,7 @@ export default class TetheringRope {
     this.name = 'Tethering Rope';
     this.tolerance = 15;
     this.strokeWidth = 5;
+    this.numSegments = 3;
     this.line1Points = [
       [{"x": 135, "y": 180},{"x": 135, "y": 185.5},{"x": 125.5, "y": 190},{"x": 120, "y": 190},],
       [{"x": 120, "y": 190},{"x": 114.5, "y": 190},{"x": 105, "y": 190},{"x": 105, "y": 180},],

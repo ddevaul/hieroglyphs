@@ -14,6 +14,7 @@ export default class Quail {
     this.name = 'Quail';
     this.tolerance = 15;
     this.strokeWidth = 5;
+    this.numSegments = 6;
     this.line1Points = [
       [{"x": 100, "y": 100},{"x": 100, "y": 100},{"x": 110, "y": 85},{"x": 130, "y": 72},],
       [{"x": 130, "y": 72},{"x": 130, "y": 72},{"x": 137, "y": 66},{"x": 140, "y": 66},],

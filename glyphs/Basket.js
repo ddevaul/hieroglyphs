@@ -14,6 +14,7 @@ export default class Basket {
     this.name = 'Basket';
     this.tolerance = 15;
     this.strokeWidth = 5;
+    this.numSegments = 2;
     this.line1Points = [
       [{"x": 75, "y": 177},{"x": 75, "y": 177},{"x": 325, "y": 177},{"x": 325, "y": 177},],
     ]

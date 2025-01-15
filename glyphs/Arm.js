@@ -14,6 +14,7 @@ export default class Arm {
     this.name = 'Arm';
     this.tolerance = 15;
     this.strokeWidth = 5;
+    this.numSegments = 2;
     this.line1Points = [
     [{"x": 70, "y": 190}, {"x": 120, "y": 190}, {"x": 120, "y": 190}, {"x": 120, "y": 190}],
     [{"x": 120, "y": 190}, {"x": 130, "y": 200}, {"x": 140, "y": 210}, {"x": 120, "y": 230}],

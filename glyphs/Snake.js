@@ -14,6 +14,7 @@ export default class Snake {
     this.name = 'Snake';
     this.tolerance = 15;
     this.strokeWidth = 5;
+    this.numSegments = 3;
     this.line1Points = [
       [{"x": 50, "y": 190},{"x": 50, "y": 190},{"x": 85, "y": 190},{"x": 85, "y": 190},],
       [{"x": 85, "y": 190},{"x": 85, "y": 190},{"x": 90, "y": 190},{"x": 110, "y": 210},],

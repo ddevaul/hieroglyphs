@@ -14,6 +14,7 @@ export default class Bolt {
     this.name = 'Bolt';
     this.tolerance = 15;
     this.strokeWidth = 5;
+    this.numSegments = 3;
     this.line1Points = [
       [{"x": 75, "y": 200},{"x": 75, "y": 200},{"x": 325, "y": 200},{"x": 325, "y": 200},],
     ]

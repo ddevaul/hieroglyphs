@@ -14,6 +14,7 @@ export default class Courtyard {
     this.name = 'Courtyard';
     this.tolerance = 15;
     this.strokeWidth = 5;
+    this.numSegments = 1;
     this.line1Points = [
       [{"x": 100, "y": 275},{"x": 100, "y": 275},{"x": 100, "y": 123},{"x": 100, "y": 123},],
       [{"x": 100, "y": 123},{"x": 100, "y": 123},{"x": 100, "y": 125},{"x": 102, "y": 125},],

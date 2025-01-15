@@ -14,6 +14,7 @@ export default class Ringstand {
     this.name = 'Ringstand';
     this.tolerance = 15;
     this.strokeWidth = 5;
+    this.numSegments = 2;
     this.line1Points = [
       [{"x": 150, "y": 125},{"x": 150, "y": 125},{"x": 250, "y": 125},{"x": 250, "y": 125},],
       [{"x": 150, "y": 125},{"x": 150, "y": 125},{"x": 150, "y": 135},{"x": 150, "y": 135},],

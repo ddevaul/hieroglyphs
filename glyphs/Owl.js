@@ -14,6 +14,7 @@ export default class Owl {
     this.name = 'Owl';
     this.tolerance = 15;
     this.strokeWidth = 5;
+    this.numSegments = 6;
     this.line1Points = [
       [{"x": 100, "y": 110},{"x": 100, "y": 110},{"x": 105, "y": 72},{"x": 105, "y": 72},],
       [{"x": 105, "y": 72},{"x": 105, "y": 72},{"x": 170, "y": 72},{"x": 170, "y": 72},],

@@ -14,6 +14,7 @@ export default class Aleph {
     this.name = 'Aleph';
     this.tolerance = 15;
     this.strokeWidth = 5;
+    this.numSegments = 6;
     this.line1Points = [[{"x": 100, "y": 110}, {"x": 110, "y": 97}, {"x": 130, "y": 88}, {"x": 200, "y": 88}]] // all the points for all the bezier curves
     this.line2Points = [[{"x": 100, "y": 110}, {"x": 140, "y": 70}, {"x": 150, "y": 108}, {"x": 150, "y": 200}], [{"x": 150, "y": 200}, {"x": 150, "y": 260}, {"x": 220, "y": 260}, {"x": 220, "y": 360}]] // all the points for all the bezier curves
     this.line3Points = [[{"x": 180, "y": 260}, {"x": 180, "y": 290}, {"x": 170, "y": 320}, {"x": 160, "y": 360}]]

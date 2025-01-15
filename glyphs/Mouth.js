@@ -14,6 +14,7 @@ export default class Mouth {
     this.name = 'Mouth';
     this.tolerance = 15;
     this.strokeWidth = 5;
+    this.numSegments = 2;
     this.line1Points = [
       [{"x": 65, "y": 215},{"x": 65, "y": 215},{"x": 80, "y": 215},{"x": 80, "y": 215},],
       [{"x": 80, "y": 215},{"x": 80, "y": 215},{"x": 100, "y": 213},{"x": 110, "y": 205},],

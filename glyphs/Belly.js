@@ -14,6 +14,7 @@ export default class Belly {
     this.name = 'Belly';
     this.tolerance = 15;
     this.strokeWidth = 5;
+    this.numSegments = 8;
     this.line1Points = [
       [{"x": 130, "y": 200},{"x": 120, "y": 180},{"x": 75, "y": 160},{"x": 65, "y": 200},],
       [{"x": 65, "y": 200},{"x": 75, "y": 240},{"x": 120, "y": 220},{"x": 130, "y": 200},],
